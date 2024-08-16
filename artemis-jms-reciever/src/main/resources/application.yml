@@ -1,0 +1,30 @@
+server:
+  port: 9094
+
+spring:
+  application:
+    name: jms-receiver-artemis
+  output:
+    ansi:
+      enabled: ALWAYS
+  docker:
+    compose:
+      enabled: true
+      file: compose.yaml
+      lifecycle-management: start_and_stop
+  jms:
+    template:
+      default-destination: "training"
+      session:
+        acknowledge-mode: client
+  artemis:
+    # unfortunately, spring-boot-starter-artemis doesn't support amqp
+    broker-url: tcp://localhost:61616
+    user: artemis
+    password: artemis
+
+logging:
+  level:
+    org.springframework.jms: DEBUG
+    jakarta.jms: DEBUG
+    org.apache.activemq.artemis: DEBUG

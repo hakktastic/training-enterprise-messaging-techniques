@@ -1,0 +1,16 @@
+services:
+
+  activemq-artemis-service:
+    image: apache/activemq-artemis:latest-alpine
+    restart: always
+    ports:
+      # jms
+      - 61616:61616
+      # console
+      - 8161:8161
+      # amqp
+      - 5672:5672
+    environment:
+      - ARTEMIS_USER=artemis
+      - ARTEMIS_PASSWORD=artemis
+      - ANONYMOUS_LOGIN=false

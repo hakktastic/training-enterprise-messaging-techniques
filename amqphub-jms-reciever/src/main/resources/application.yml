@@ -1,0 +1,32 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: jms-receiver-amqphub
+  output:
+    ansi:
+      enabled: ALWAYS
+  docker:
+    compose:
+      enabled: true
+      file: compose.yaml
+      lifecycle-management: start_and_stop
+  jms:
+    template:
+      default-destination: "training"
+    listener:
+      session:
+        acknowledge-mode: client
+
+amqphub:
+  amqp10jms:
+    remote-url: amqp://localhost:5672
+    username: artemis
+    password: artemis
+
+logging:
+  level:
+    org.springframework.jms: DEBUG
+    jakarta.jms: DEBUG
+    org.amqphub: DEBUG

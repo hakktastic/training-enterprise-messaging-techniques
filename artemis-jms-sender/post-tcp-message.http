@@ -1,0 +1,7 @@
+### generate ampq message through rest call
+POST http://localhost:9093/api/message
+Content-Type: application/json
+
+{
+  "Send TCP Message"
+}

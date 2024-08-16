@@ -1,0 +1,7 @@
+### generate ampq message through rest call
+POST http://localhost:9090/api/message
+Content-Type: application/json
+
+{
+  "Send AMQP Message"
+}
